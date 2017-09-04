@@ -1,5 +1,6 @@
 package no.gitt.todoliste;
 
+import no.gitt.todoliste.helper.DateHelper;
 import no.gitt.todoliste.model.Todo;
 import no.gitt.todoliste.repository.TodoRepository;
 import org.junit.Assert;
@@ -23,7 +24,7 @@ public class ToDoListeApplicationTests {
 
 	@Test
 	public void databaseTest() {
-		Todo todo = new Todo("test",false);
+		Todo todo = new Todo("test",false, DateHelper.getEpochforYesterday(),DateHelper.getEpochforYesterday());
 		Todo returTodo = todoRepository.save(todo);
 		Assert.assertEquals(todo,returTodo);
 	}
