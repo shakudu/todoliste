@@ -90,14 +90,13 @@
 </script>
 
 <script>
-    $( function() {
+    $(document).ready( function() {
+        var format = 'dd/mm/yy';
         $( "#tidstopp" ).datepicker({
-            defaultDate: new Date(),
-            dateFormat : 'dd/mm/yy'});
+            dateFormat : format });
         $( "#tidstart" ).datepicker({
-            defaultDate: +7,
-            dateFormat : 'dd/mm/yy'});
-    } );
+            dateFormat : format});
+    });
 </script>
 
 </body>

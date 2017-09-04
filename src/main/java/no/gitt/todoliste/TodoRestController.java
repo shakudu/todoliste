@@ -23,8 +23,7 @@ public class TodoRestController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public Todo todoById(@PathVariable String id) {
-        Todo todo = todoRepository.findById(id);
-        return todo;
+        return todoRepository.findById(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -32,7 +31,6 @@ public class TodoRestController {
         todoRepository.save(todo);
         return new ResponseEntity<>(todo, HttpStatus.OK);
     }
-
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public ResponseEntity<Todo> deleteTodo(@PathVariable String id) {
