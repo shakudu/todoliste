@@ -1,5 +1,6 @@
 package no.gitt.todoliste;
 
+import no.gitt.todoliste.Helper.DateHelper;
 import no.gitt.todoliste.model.Todo;
 import no.gitt.todoliste.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +23,9 @@ public class TodoController {
      */
     @Autowired
     private void instansierData() {
-        todoRepository.save(new Todo("Handle melk på butikken",false));
-        todoRepository.save(new Todo("Plukk opp barna i barnehagen",false));
-        todoRepository.save(new Todo("Vask klær",true));
+        todoRepository.save(new Todo("Handle melk på butikken",false, DateHelper.getEpochForTomorrow(),DateHelper.getEpochforYesterday()));
+        todoRepository.save(new Todo("Plukk opp barna i barnehagen",false,DateHelper.getEpochForTomorrow(),DateHelper.getEpochforYesterday()));
+        todoRepository.save(new Todo("Vask klær",true,DateHelper.getEpochForTomorrow(),DateHelper.getEpochforYesterday()));
     }
 
     @RequestMapping("/")
@@ -37,7 +38,5 @@ public class TodoController {
     public String todoTabell(Model model) {
         model.addAttribute("todoListe",todoRepository.findAllByOrderByTidDesc());
         return "fragments/todo_tabell";
-}
-
-
+    }
 }
