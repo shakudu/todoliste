@@ -1,4 +1,4 @@
-package no.gitt.todoliste.Helper;
+package no.gitt.todoliste.helper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
