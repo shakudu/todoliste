@@ -22,14 +22,6 @@ public class Todo {
         this.tidStopp = tidStopp;
     }
 
-    public Todo(String task, Boolean completed) {
-        this.task = task;
-        this.completed = completed;
-        this.tid = Instant.now().toEpochMilli();
-        this.tidStart = Instant.now().toEpochMilli();
-        this.tidStopp = Instant.now().toEpochMilli();
-    }
-
     public Todo() {
         this.tid = Instant.now().toEpochMilli();
     }
