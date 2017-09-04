@@ -1,10 +1,7 @@
 $(document).ready(function () {
 
     $("#lagreKnapp").click(function () {
-        var nyOppgave = $("#textarea").val();
-        var json = { "task": nyOppgave, "completed": "false","tidStart" : $("#tidstart").val(), "tidStopp" : $("#tidstopp").val() };
-        console.log(json);
-
+        var json = { "task": $("#textarea").val(), "completed": "false","tidStart" : $("#tidstart").val(), "tidStopp" : $("#tidstopp").val() };
         $.ajax({
             type: "POST",
             url: "/api/todo",

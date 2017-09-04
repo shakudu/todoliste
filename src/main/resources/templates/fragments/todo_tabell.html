@@ -6,6 +6,13 @@
 <body>
 
 <table class="table table-striped" id="tabell">
+    <tr>
+        <th>Oppgave</th>
+        <th>Status</th>
+        <th>Start</th>
+        <th>Frist</th>
+        <th>Handling</th>
+    </tr>
     <!--/*@thymesVar id="todoListe" type="java.util.List<Todo>"*/-->
     <tr th:each="todo : ${todoListe}">
         <td th:text="${todo.task}"></td>
@@ -15,6 +22,8 @@
         <td th:if="!${todo.completed}">
             <button class="toggle btn btn-sm btn-success" th:value="${todo.id}" th:text="Todo  " />
         </td>
+        <td th:text="${todo.getTidStartFormatted('dd/mm/yyyy')}"></td>
+        <td th:text="${todo.getTidStoppFormatted('dd/mm/yyyy')}"></td>
         <td>
             <button type="button" th:value="${todo.id}" class="sletteknapp btn btn-sm btn-default">
                 <span class="glyphicon glyphicon-trash"></span> Slett

@@ -21,9 +21,9 @@ public class TodoController {
      */
     @Autowired
     private void instansierData() {
-        todoRepository.save(new Todo("Handle melk på butikken",false, DateHelper.getEpochForTomorrow(),DateHelper.getEpochforYesterday()));
-        todoRepository.save(new Todo("Plukk opp barna i barnehagen",false,DateHelper.getEpochForTomorrow(),DateHelper.getEpochforYesterday()));
-        todoRepository.save(new Todo("Vask klær",true,DateHelper.getEpochForTomorrow(),DateHelper.getEpochforYesterday()));
+        todoRepository.save(new Todo("Handle melk på butikken",false, "04/09/2017","10/10/2017"));
+        todoRepository.save(new Todo("Plukk opp barna i barnehagen",false, "05/09/2017","10/10/2017"));
+        todoRepository.save(new Todo("Vask klær",true, "08/09/2017","12/09/2017"));
     }
 
     @RequestMapping("/")

@@ -3,7 +3,9 @@ package no.gitt.todoliste.model;
 import no.gitt.todoliste.helper.DateHelper;
 import org.springframework.data.annotation.Id;
 
+import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.util.Date;
 
 public class Todo {
     @Id
@@ -14,14 +16,6 @@ public class Todo {
     private Long tid;
     private Long tidStart;
     private Long tidStopp;
-
-    public Todo(String task, Boolean completed, Long tidStart, Long tidStopp) {
-        this.task = task;
-        this.completed = completed;
-        this.tid = Instant.now().toEpochMilli();
-        this.tidStart = tidStart;
-        this.tidStopp = tidStopp;
-    }
 
     public Todo(String task, Boolean completed, String tidStart, String tidStopp) {
         this.task = task;
@@ -71,12 +65,27 @@ public class Todo {
         this.tidStart = tidStart;
     }
 
+    public void setTidStart(String tidStart) {
+        this.tidStart = DateHelper.getEpochFromDatepicker(tidStart);
+    }
+
     public Long getTidStopp() {
         return tidStopp;
     }
 
     public void setTidStopp(Long tidStopp) {
         this.tidStopp = tidStopp;
+    }
+
+    public void setTidStopp(String tidStopp) {
+        this.tidStopp = DateHelper.getEpochFromDatepicker(tidStopp);
+    }
+
+    public String getTidStartFormatted(String format) {
+        return new SimpleDateFormat(format).format(new Date(this.getTidStart()));
+    }
+    public String getTidStoppFormatted(String format) {
+        return new SimpleDateFormat(format).format(new Date(this.getTidStopp()));
     }
 
 }
