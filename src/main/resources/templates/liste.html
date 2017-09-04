@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Todo-liste</title>
+    <link th:href="@{/webjars/bootstrap/4.0.0-beta/css/bootstrap.min.css}" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" th:href="@{/webjars/bootstrap-glyphicons/bdd2cbfba0/css/bootstrap-glyphicons.css}" />
+    <link type="text/css" rel="stylesheet" th:href="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.css}" />
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Todo-liste</a>
+</nav>
+
+<div class="modal" id="modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-title">Legg til oppgave</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <textarea id="textarea" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="tidstopp">Start:</label>
+                    <input class="form-control" type="text" id="tidstart" />
+                </div>
+                <div class="form-group">
+                    <label for="tidstopp">Stopp:</label>
+                    <input class="form-control" type="text" id="tidstopp" />
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="lagreKnapp" class="btn btn-success" data-dismiss="modal">Lagre</button>
+                <button type="button" id="avbrytKnapp" class="btn btn-secondary" data-dismiss="modal">Avbryt</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div id="alerts"></div>
+
+    <p>
+        <span class="form-inline">
+            <input autocomplete="off" id="search" class="form-control mr-sm-2" type="text" placeholder="Søk" aria-label="Search"/>
+            <button id="nullstillKnapp" class="btn btn-default">Nullstill søk</button>
+        </span>
+    </p>
+
+
+    <table class="table table-striped" id="tabell">
+
+    </table>
+    <p class="text-muted" id="treff"></p>
+
+    <button class="btn btn-primary" data-toggle="modal" data-target="#modal">Ny oppgave</button>
+
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">IFT303 Webprogrammering - Oblig 1. Gard Marius Guldhav</p>
+    </div>
+</footer>
+
+<script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}" />
+<script th:src="@{/js/popper/1.11.0/popper.min.js}" />
+<script th:src="@{/webjars/bootstrap/4.0.0-beta/js/bootstrap.min.js}" />
+<script th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}" />
+
+
+<script th:src="@{/js/alert.js}" />
+<script th:src="@{/js/tableSearch.js}" />
+<script th:src="@{/js/skjemaKnapper.js}" />
+<script th:src="@{/js/tabellFunksjoner.js}" />
+
+<script>
+    tabellLoad(); // Laster inn fresh tabell.
+    resetSearch(); // Kaller denne for å skjule "Nullstill søk"-knappen.
+</script>
+
+<script>
+    $( function() {
+        $( "#tidstopp" ).datepicker({
+            defaultDate: new Date(),
+            dateFormat : 'dd/mm/yy'});
+        $( "#tidstart" ).datepicker({
+            defaultDate: +7,
+            dateFormat : 'dd/mm/yy'});
+    } );
+</script>
+
+</body>
+</html>
