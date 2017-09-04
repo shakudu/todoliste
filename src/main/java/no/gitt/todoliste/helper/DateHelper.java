@@ -6,17 +6,11 @@ import java.time.Instant;
 
 public class DateHelper {
 
-    public static Long getEpochFromDate(int dd, int mm, int yyyy)  {
-        String date = String.format("%s/%s/%s", dd, mm, yyyy);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
-        try {
-            return simpleDateFormat.parse(date).getTime();
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
+    /**
+     * Converts a date in dd/mm/yyyy format to epoch for database use.
+     * @param date
+     * @return
+     */
     public static Long getEpochFromDatepicker(String date) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
         try {
