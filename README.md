@@ -3,5 +3,6 @@
 - Clone
 - Manage pom.xml with maven
 - Build
+- Make run configuration (ToDoListeApplication)
 - Run
 - http://localhost:8080
