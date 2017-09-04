@@ -1,5 +1,6 @@
 package no.gitt.todoliste.model;
 
+import no.gitt.todoliste.helper.DateHelper;
 import org.springframework.data.annotation.Id;
 
 import java.time.Instant;
@@ -20,6 +21,14 @@ public class Todo {
         this.tid = Instant.now().toEpochMilli();
         this.tidStart = tidStart;
         this.tidStopp = tidStopp;
+    }
+
+    public Todo(String task, Boolean completed, String tidStart, String tidStopp) {
+        this.task = task;
+        this.completed = completed;
+        this.tid = Instant.now().toEpochMilli();
+        this.tidStart = DateHelper.getEpochFromDatepicker(tidStart);
+        this.tidStopp = DateHelper.getEpochFromDatepicker(tidStopp);
     }
 
     public Todo() {

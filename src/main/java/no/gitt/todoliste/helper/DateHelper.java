@@ -17,6 +17,16 @@ public class DateHelper {
         }
     }
 
+    public static Long getEpochFromDatepicker(String date) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
+        try {
+            return simpleDateFormat.parse(date).getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
     // For å gjøre innlegging av demodata enklere
     public static long getEpochForTomorrow() {
