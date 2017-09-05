@@ -2,29 +2,47 @@ $(document).ready(function () {
 
     $("#lagreKnapp").click(function () {
         var id = $("#id").val();
-        if(id) {
-            var json = { "id" : id,"task": $("#textarea").val(), "completed": "false","tidStart" : $("#tidstart").val(), "tidStopp" : $("#tidstopp").val() };
+        var tekst = $("#textarea").val();
+        if(tekst == "") {
+            $("#textarea").prop('required','true');
+
         } else {
-            var json = { "task": $("#textarea").val(), "completed": "false","tidStart" : $("#tidstart").val(), "tidStopp" : $("#tidstopp").val() };
+            $("#textarea").removeProp('required');
+            if (id) {
+                var json = {
+                    "id": id,
+                    "task": tekst,
+                    "completed": "false",
+                    "tidStart": $("#tidstart").val(),
+                    "tidStopp": $("#tidstopp").val()
+                };
+            } else {
+                var json = {
+                    "task": $("#textarea").val(),
+                    "completed": "false",
+                    "tidStart": $("#tidstart").val(),
+                    "tidStopp": $("#tidstopp").val()
+                };
+            }
+            $.ajax({
+                type: "POST",
+                url: "/api/todo",
+                data: JSON.stringify(json),
+                success: function () {
+                    displayAlert("success", "OK", "Ny oppgave lagt til i listen");
+                    nullstillSkjema();
+                    tabellLoad();
+                    $("#modal").modal('toggle');
+                },
+                contentType: "application/json;charset=UTF-8",
+                dataType: "json",
+            });
         }
-        $.ajax({
-            type: "POST",
-            url: "/api/todo",
-            data: JSON.stringify(json),
-            success : function() {
-                displayAlert("success","OK","Ny oppgave lagt til i listen");
-                nullstillSkjema();
-                tabellLoad();
-
-            },
-            contentType:"application/json;charset=UTF-8",
-            dataType: "json",
-        });
-
     });
 
     $("#avbrytKnapp").click(function () {
         $("#textarea").val("");
+        $("#textarea").removeProp('required');
     });
 
     $("#nyknapp").click(function () {
