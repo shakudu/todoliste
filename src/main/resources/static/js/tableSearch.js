@@ -37,8 +37,10 @@ $("#search").keyup(function () {
     }
 
     treff = 0;
-    $("#tabell tr").each(function () {
+
+    $("#tabell tr:not(:first-child)").each(function () {
         var task = $(this).text().toLowerCase();
+        $(this).highlight(searchInput);
         if(searchInput) {
             if (task.search(searchInput.toLowerCase()) != -1) {
                 $(this).show();
@@ -52,4 +54,5 @@ $("#search").keyup(function () {
         }
         setTreff(treff)
     });
+
 });
