@@ -1,11 +1,8 @@
 package no.gitt.todoliste.model;
 
-import no.gitt.todoliste.helper.DateHelper;
 import org.springframework.data.annotation.Id;
 
-import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.util.Date;
 
 public class Todo {
     @Id
@@ -14,15 +11,15 @@ public class Todo {
     private String task;
     private Boolean completed;
     private Long tid;
-    private Long tidStart;
-    private Long tidStopp;
+    private String tidStart;
+    private String tidStopp;
 
     public Todo(String task, Boolean completed, String tidStart, String tidStopp) {
         this.task = task;
         this.completed = completed;
         this.tid = Instant.now().toEpochMilli();
-        this.tidStart = DateHelper.getEpochFromDatepicker(tidStart);
-        this.tidStopp = DateHelper.getEpochFromDatepicker(tidStopp);
+        this.tidStart = tidStart;
+        this.tidStopp = tidStopp;
     }
 
     public Todo() {
@@ -57,35 +54,19 @@ public class Todo {
         return id;
     }
 
-    public Long getTidStart() {
+    public String getTidStart() {
         return tidStart;
     }
 
-    public void setTidStart(Long tidStart) {
+    public void setTidStart(String tidStart) {
         this.tidStart = tidStart;
     }
 
-    public void setTidStart(String tidStart) {
-        this.tidStart = DateHelper.getEpochFromDatepicker(tidStart);
-    }
-
-    public Long getTidStopp() {
+    public String getTidStopp() {
         return tidStopp;
     }
 
-    public void setTidStopp(Long tidStopp) {
+    public void setTidStopp(String tidStopp) {
         this.tidStopp = tidStopp;
     }
-
-    public void setTidStopp(String tidStopp) {
-        this.tidStopp = DateHelper.getEpochFromDatepicker(tidStopp);
-    }
-
-    public String getTidStartFormatted(String format) {
-        return new SimpleDateFormat(format).format(new Date(this.getTidStart()));
-    }
-    public String getTidStoppFormatted(String format) {
-        return new SimpleDateFormat(format).format(new Date(this.getTidStopp()));
-    }
-
 }

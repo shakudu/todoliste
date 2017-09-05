@@ -45,14 +45,13 @@ function tabellLoadCallback() {
             type: 'GET',
             success: function (todo) {
                 console.log(todo);
+                $("#id").val(todo.id);
                 $("#textarea").val(todo.task);
                 $("#tidstart").val(todo.tidStart);
                 $("#tidstopp").val(todo.tidStopp);
                 showModal("modal");
             },
-
         });
-
     });
 
 }

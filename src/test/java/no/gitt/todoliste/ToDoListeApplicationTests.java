@@ -1,13 +1,11 @@
 package no.gitt.todoliste;
 
-import no.gitt.todoliste.helper.DateHelper;
 import no.gitt.todoliste.model.Todo;
 import no.gitt.todoliste.repository.TodoRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.client.AutoConfigureWebClient;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 

@@ -26,7 +26,12 @@
                 </button>
             </div>
             <div class="modal-body">
+                <div id="id_group" class="form-group">
+                    <label for="id">id:</label>
+                    <input disabled="true" class="form-control" type="text" id="id" />
+                </div>
                 <div class="form-group">
+                    <label for="textarea">Oppgave:</label>
                     <textarea id="textarea" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
@@ -63,7 +68,7 @@
     </table>
     <p class="text-muted" id="treff"></p>
 
-    <button class="btn btn-primary" data-toggle="modal" data-target="#modal">Ny oppgave</button>
+    <button class="btn btn-primary" data-toggle="modal" data-target="#modal" id="nyknapp">Ny oppgave</button>
 
 </div>
 
