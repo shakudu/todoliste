@@ -10,3 +10,17 @@
 
 ### Bruk
 - For å slette en oppgave, hold inne knappen.
+
+
+### Kilder
+Jquery API Documentation
+https://api.jquery.com/
+
+Bootstrap Getting Started
+https://v4-alpha.getbootstrap.com/getting-started/introduction/
+
+Spring Boot docs
+https://docs.spring.io/spring-boot/docs/current/api/
+
+Stackoverflow<br>
+https://stackoverflow.com/questions/4027855/jquery-selector-for-table-cells-except-first-last-row-column
