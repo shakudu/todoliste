@@ -38,14 +38,33 @@ function tabellLoadCallback() {
     });
 
     // Redigering
+    $(".redigerknapp").click(function () {
+        var id = $(this).val();
+        $.ajax({
+            url: '/api/todo/' + id,
+            type: 'GET',
+            success: function (todo) {
+                console.log(todo);
+                $("#textarea").val(todo.task);
+                $("#tidstart").val(todo.tidStart);
+                $("#tidstopp").val(todo.tidStopp);
+                showModal("modal");
+            },
 
+        });
 
-    // Animer inn/ut sletteknapp.
+    });
 
 }
 
 function tabellLoad() {
     $("#tabell").load("/tabell", function () {
         tabellLoadCallback();
+    });
+}
+
+function showModal(modal)  {
+    $('#' + modal).modal({
+        show: true
     });
 }
