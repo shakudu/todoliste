@@ -24,7 +24,7 @@ public class ToDoListeApplicationTests {
 
 	@Test
 	public void databaseTest() {
-		Todo todo = new Todo("test",false, DateHelper.getEpochforYesterday(),DateHelper.getEpochforYesterday());
+		Todo todo = new Todo("test",false, "06/08/2017","06/09/2017");
 		Todo returTodo = todoRepository.save(todo);
 		Assert.assertEquals(todo,returTodo);
 	}
