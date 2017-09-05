@@ -6,3 +6,7 @@
 - Make run configuration (ToDoListeApplication)
 - Run
 - http://localhost:8080
+
+
+### Bruk
+- For å slette en oppgave, hold inne knappen.
