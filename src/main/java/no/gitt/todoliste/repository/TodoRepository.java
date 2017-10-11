@@ -11,6 +11,7 @@ public interface TodoRepository extends MongoRepository<Todo, String> {
     List<Todo> findAll();
     Todo save(Todo todo);
     List<Todo> findAllByOrderByTidDesc();
+    List<Todo> findAllByOrderByOrderAsc();
     Todo findById(String id);
 
 }

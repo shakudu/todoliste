@@ -8,6 +8,20 @@ public class Todo {
     @Id
     private String id;
 
+    private int order;
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
+    }
+
     private String task;
     private Boolean completed;
     private Long tid;
@@ -20,6 +34,15 @@ public class Todo {
         this.tid = Instant.now().toEpochMilli();
         this.tidStart = tidStart;
         this.tidStopp = tidStopp;
+    }
+
+    public Todo(String task, Boolean completed, String tidStart, String tidStopp, int order) {
+        this.task = task;
+        this.completed = completed;
+        this.tid = Instant.now().toEpochMilli();
+        this.tidStart = tidStart;
+        this.tidStopp = tidStopp;
+        this.order = order;
     }
 
     public Todo() {

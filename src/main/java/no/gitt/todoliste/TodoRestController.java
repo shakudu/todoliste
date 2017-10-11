@@ -18,7 +18,7 @@ public class TodoRestController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Todo> todoListe() {
-        return todoRepository.findAllByOrderByTidDesc();
+        return todoRepository.findAllByOrderByOrderAsc();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
