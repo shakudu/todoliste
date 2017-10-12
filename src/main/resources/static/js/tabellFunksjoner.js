@@ -61,7 +61,6 @@ function tabellLoad() {
         });
 
         $(".redigerknapp").on("click",function () {
-            console.log("Meeep");
             var id = $(this).val();
             $.ajax({
                 url: '/api/todo/' + id,

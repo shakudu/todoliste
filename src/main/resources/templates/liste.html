@@ -114,6 +114,26 @@
         tabellLoad();
         resetSearch(); // Kaller denne for å skjule "Nullstill søk"-knappen.
     });
+
+    $("#tabell tbody").sortable({
+        axis: "y",
+        cursor: "move",
+        stop: function() {
+            updatePositions()
+        }
+    }).disableSelection();
+
+    function updatePositions() {
+        console.log("updating order");
+        var order = 1;
+        var data = {};
+        $("#personlist").children().each(function () {
+            var id = $(this).find(".redigerknapp").val();
+            data[id]= order;
+            order++;
+        });
+        console.log(data);
+    }
 </script>
 
 
