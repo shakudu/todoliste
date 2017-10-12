@@ -48,7 +48,6 @@ $(document).ready(function () {
     $("#nyknapp").click(function () {
         nullstillSkjema();
     });
-
 });
 
 function nullstillSkjema() {

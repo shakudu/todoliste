@@ -26,14 +26,8 @@ public class TodoController {
     }
 
     @RequestMapping("/")
-    public String todoListe(Model model) {
-        model.addAttribute("todoListe",todoRepository.findAllByOrderByOrderAsc());
+    public String todoListe() {
         return "liste";
     }
 
-    @RequestMapping("/tabell")
-    public String todoTabell(Model model) {
-        model.addAttribute("todoListe",todoRepository.findAllByOrderByOrderAsc());
-        return "fragments/todo_tabell";
-    }
 }
