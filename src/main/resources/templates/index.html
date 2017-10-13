@@ -139,10 +139,8 @@
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
             data: JSON.stringify(data),
-            always: function () {
-                tabellLoad();
-                console.log("rekkefølge endret");
-                //displayAlert("success", "OK","Rekkefølge lagret");
+            complete: function () {
+                displayAlert("success", "OK","Rekkefølge lagret");
             }
         });
     }
