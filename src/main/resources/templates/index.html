@@ -125,8 +125,14 @@
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
             data: JSON.stringify(data),
-            complete: function () {
-                displayAlert("success", "OK","Rekkefølge lagret");
+            statusCode: {
+                200: function () {
+                    displayAlert("success", "OK","Rekkefølge lagret");
+                },
+                403: function () {
+                    displayAlert("info", "OBS!","Du må logge inn for å kunne gjøre endringer i listen");
+                    tabellLoad();
+                }
             }
         });
     }

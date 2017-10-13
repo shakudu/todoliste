@@ -9,15 +9,27 @@
 <nav th:replace="fragments/common :: navbar" />
 
 <div class="container-fluid">
-    <h1>Login page</h1>
-    <p th:if="${loginError}" class="error">Wrong user or password</p>
-    <form th:action="@{/login}" method="post">
-        <label for="username">Username</label>:
-        <input type="text" id="username" name="username" autofocus="autofocus" /> <br />
-        <label for="password">Password</label>:
-        <input type="password" id="password" name="password" /> <br />
-        <input type="submit" value="Log in" />
-    </form>
+
+    <div class="row">
+        <div class="col-sm-5"></div>
+        <div class="col-sm-2">
+            <h1 class="text-center login-title">Logg inn</h1>
+            <p th:if="${loginError}" class="error">Wrong user or password</p>
+            <form th:action="@{/login}" method="post">
+                <div class="form-group">
+                    <label for="username">Username</label>:
+                    <input class="form-control" type="text" id="username" name="username" autofocus="autofocus" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>:
+                    <input class="form-control" type="password" id="password" name="password" />
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-default" type="submit" value="Log in" />
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <footer th:replace="fragments/common :: footer" />
