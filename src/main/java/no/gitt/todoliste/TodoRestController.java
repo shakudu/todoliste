@@ -57,6 +57,6 @@ public class TodoRestController {
          for(Todo t : todoList) {
              todoRepository.save(t);
          }
-        return new ResponseEntity<>("Order changed", HttpStatus.OK);
+        return new ResponseEntity("OK",HttpStatus.OK);
     }
 }

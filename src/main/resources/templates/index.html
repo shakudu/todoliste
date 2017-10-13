@@ -127,9 +127,9 @@
             var task = $(this).find("#oppgave").text();
             var start = $(this).find("#start").text();
             var stopp = $(this).find("#stopp").text();
-            if($(this).find("#status").text() == "Todo") { var comp = true; }
-            else { var comp = false; }
-            data.push({ "order" : order ,"id" : id, "task" : task, "start" : start, "stopp" : stopp, "completed" : comp});
+            if($(this).find("#status").text() == "Todo") { var comp = false; }
+            else { var comp = true; }
+            data.push({ "order" : order ,"id" : id, "task" : task, "tidStart" : start, "tidStopp" : stopp, "completed" : comp});
             order++;
         });
 
@@ -138,7 +138,12 @@
             type: 'POST',
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
-            data: JSON.stringify(data)
+            data: JSON.stringify(data),
+            always: function () {
+                tabellLoad();
+                console.log("rekkefølge endret");
+                //displayAlert("success", "OK","Rekkefølge lagret");
+            }
         });
     }
 </script>

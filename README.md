@@ -1,5 +1,5 @@
 # Todoliste
-### IFT302 Web Baserte Systemer - Arbeidsoppgave 1
+### IFT302 Web Baserte Systemer - Arbeidsoppgave 2
 - Clone
 - Manage pom.xml with maven
 - Build
@@ -9,7 +9,7 @@
 
 
 ### Bruk
-- For å slette en oppgave, hold inne knappen.
+- For å sortere, dra raden dit du vil ha den.
 
 
 ### Kilder
