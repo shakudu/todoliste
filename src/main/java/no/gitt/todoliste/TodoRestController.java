@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/todo")
@@ -49,5 +50,13 @@ public class TodoRestController {
         }
         todoRepository.save(todo);
         return new ResponseEntity<>(todo,HttpStatus.OK);
+    }
+
+    @RequestMapping(method= RequestMethod.POST, value= "/order")
+    public ResponseEntity<String> updateOrder(@RequestBody List<Todo> todoList) {
+         for(Todo t : todoList) {
+             todoRepository.save(t);
+         }
+        return new ResponseEntity<>("Order changed", HttpStatus.OK);
     }
 }

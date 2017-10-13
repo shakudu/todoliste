@@ -66,7 +66,6 @@ function tabellLoad() {
                 url: '/api/todo/' + id,
                 type: 'GET',
                 success: function (todo) {
-                    console.log(todo);
                     $("#id").val(todo.id);
                     $("#textarea").val(todo.task);
                     $("#tidstart").val(todo.tidStart);

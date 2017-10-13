@@ -42,7 +42,6 @@
                     <label for="tidstopp">Frist:</label>
                     <input class="form-control" type="text" id="tidstopp" />
                 </div>
-
             </div>
             <div class="modal-footer">
                 <button type="button" id="lagreKnapp" class="btn btn-success">Lagre</button>
@@ -81,9 +80,7 @@
 
     </table>
     <p class="text-muted" id="treff"></p>
-
     <button class="btn btn-primary" data-toggle="modal" data-target="#modal" id="nyknapp">Ny oppgave</button>
-
 </div>
 
 <footer class="footer">
@@ -96,7 +93,6 @@
 <script src="/js/popper/1.11.0/popper.min.js"></script>
 <script src="/webjars/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 <script src="/webjars/jquery-ui/1.12.1/jquery-ui.min.js"></script>
-
 
 <script src="/js/alert.js"></script>
 <script src="/js/tableSearch.js"></script>
@@ -125,16 +121,27 @@
 
     function updatePositions() {
         var order = 1;
-        var data = {};
+        var data = [];
         $("#personlist").children().each(function () {
             var id = $(this).find(".redigerknapp").val();
-            data[id]= order;
+            var task = $(this).find("#oppgave").text();
+            var start = $(this).find("#start").text();
+            var stopp = $(this).find("#stopp").text();
+            if($(this).find("#status").text() == "Todo") { var comp = true; }
+            else { var comp = false; }
+            data.push({ "order" : order ,"id" : id, "task" : task, "start" : start, "stopp" : stopp, "completed" : comp});
             order++;
         });
-        console.log(data);
+
+        $.ajax({
+            url: '/api/todo/order',
+            type: 'POST',
+            contentType: "application/json;charset=UTF-8",
+            dataType: "json",
+            data: JSON.stringify(data)
+        });
     }
 </script>
-
 
 </body>
 </html>

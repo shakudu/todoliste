@@ -27,7 +27,7 @@ public class TodoController {
 
     @RequestMapping("/")
     public String todoListe() {
-        return "liste";
+        return "index";
     }
 
 }

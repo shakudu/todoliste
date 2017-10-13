@@ -9,19 +9,6 @@ public class Todo {
     private String id;
 
     private int order;
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public int getOrder() {
-        return order;
-    }
-
-    public void setOrder(int order) {
-        this.order = order;
-    }
-
     private String task;
     private Boolean completed;
     private Long tid;
@@ -91,5 +78,27 @@ public class Todo {
 
     public void setTidStopp(String tidStopp) {
         this.tidStopp = tidStopp;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("ID: %s, Task: %s, Start: %s, Stop %s, Completed: %s",
+                getId(),
+                getTask(),
+                getTidStart(),
+                getTidStopp(),
+                getCompleted());
     }
 }
