@@ -1,20 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<head th:replace="fragments/common::head">
     <title>Todo-liste</title>
-    <link th:href="@{/webjars/bootstrap/4.0.0-beta/css/bootstrap.min.css}" rel="stylesheet" />
-    <link type="text/css" rel="stylesheet" th:href="@{/webjars/bootstrap-glyphicons/bdd2cbfba0/css/bootstrap-glyphicons.css}" />
-    <link type="text/css" rel="stylesheet" th:href="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.css}" />
-    <link rel="stylesheet" href="/css/style.css"/>
 </head>
 <body>
 
-<nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Todo-liste</a>
-</nav>
+<nav th:replace="fragments/common::navbar" />
 
 <div class="modal" id="modal">
     <div class="modal-dialog" role="document">
@@ -83,15 +74,10 @@
     <button class="btn btn-primary" data-toggle="modal" data-target="#modal" id="nyknapp">Ny oppgave</button>
 </div>
 
-<footer class="footer">
-    <div class="container">
-        <p class="text-muted">IFT302 Webprogrammering - Oblig 2. Gard Marius Guldhav</p>
-    </div>
-</footer>
+<footer th:replace="fragments/common::footer"/>
 
 <script src="/webjars/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/popper/1.11.0/popper.min.js"></script>
-<script src="/webjars/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
 <script src="/webjars/jquery-ui/1.12.1/jquery-ui.min.js"></script>
 
 <script src="/js/alert.js"></script>
@@ -111,7 +97,7 @@
         resetSearch(); // Kaller denne for å skjule "Nullstill søk"-knappen.
     });
 
-    $("#tabell tbody").sortable({
+    $("#personlist").sortable({
         axis: "y",
         cursor: "move",
         stop: function() {
