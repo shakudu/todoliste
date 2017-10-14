@@ -125,6 +125,9 @@
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
             data: JSON.stringify(data),
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader(getCSRFHeader(), getCSRFToken());
+            },
             statusCode: {
                 200: function () {
                     displayAlert("success", "OK","Rekkefølge lagret");

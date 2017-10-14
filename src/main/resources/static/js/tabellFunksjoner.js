@@ -2,6 +2,14 @@ var timeout = 0;
 tabellrad = $("tbody#personlist");
 template = tabellrad.html();
 
+function getCSRFToken() {
+    return $("meta[name='_csrf']").attr("content");
+}
+
+function getCSRFHeader() {
+    return $("meta[name='_csrf_header']").attr("content");
+}
+
 function tabellLoad() {
     $.getJSON("/api/todo", function(data) {
         tabellrad.html("");
@@ -35,6 +43,9 @@ function tabellLoad() {
             timeout = window.setTimeout(function () {
                 $.ajax({
                     url: '/api/todo/' + id,
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader(getCSRFHeader(), getCSRFToken());
+                    },
                     type: 'DELETE',
                     success: function() {
                         tabellLoad();
@@ -51,6 +62,9 @@ function tabellLoad() {
             var id = $(this).val();
             $.ajax({
                 url: 'api/todo/toggle/' + id,
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader(getCSRFHeader(), getCSRFToken());
+                },
                 type: 'POST',
                 contentType:"application/json;charset=UTF-8",
                 dataType: "json",

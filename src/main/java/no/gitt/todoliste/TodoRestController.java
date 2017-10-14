@@ -37,23 +37,23 @@ public class TodoRestController {
         return new ResponseEntity("OK",HttpStatus.OK);
     }
 
-    @PreAuthorize("hasRole('user') or hasRole('admin')")
     @RequestMapping(method = RequestMethod.POST)
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Todo> saveTodo(@RequestBody Todo todo) {
         todoRepository.save(todo);
         return new ResponseEntity<>(todo, HttpStatus.OK);
     }
 
-    @PreAuthorize("hasRole('admin')")
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    //@PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Todo> deleteTodo(@PathVariable String id) {
         Todo t = todoById(id);
         todoRepository.delete(t);
         return new ResponseEntity<>(t,HttpStatus.OK);
     }
 
-    @PreAuthorize("hasRole('user') or hasRole('admin')")
     @RequestMapping(method = RequestMethod.POST, value = "toggle/{id}")
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Todo> toggleTodo(@PathVariable String id) {
         Todo todo = todoById(id);
         if(todo.getCompleted()) {

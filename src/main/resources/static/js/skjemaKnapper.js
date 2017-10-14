@@ -27,6 +27,9 @@ $(document).ready(function () {
             $.ajax({
                 type: "POST",
                 url: "/api/todo",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader(getCSRFHeader(), getCSRFToken());
+                },
                 data: JSON.stringify(json),
                 success: function () {
                     displayAlert("success", "OK", "Ny oppgave lagt til i listen");

@@ -3,6 +3,8 @@
 <head th:fragment="head">
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet" />
     <link type="text/css" rel="stylesheet" href="/webjars/jquery-ui/1.12.1/jquery-ui.min.css" />
@@ -16,7 +18,11 @@
         </div>
 
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="/login"><span class="glyphicon glyphicon-user"></span> Logg inn</a></li>
+            <li>
+                <a href="/login"><span class="glyphicon glyphicon-user"></span>
+                    <p th:text="${username}"/>Logg inn
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
