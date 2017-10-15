@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -14,14 +14,14 @@
 <nav th:fragment="navbar" class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Todo-liste</a>
+            <a class="navbar-brand" href="/">Todo-liste</a>
         </div>
 
         <ul class="nav navbar-nav navbar-right">
             <li>
                 <a href="/login"><span class="glyphicon glyphicon-user"></span>
-                        <p th:text="${username}"/>
-                    Logg inn
+                        <span sec:authorize="isAuthenticated()" th:text="${username}" />
+                        <span sec:authorize="isAnonymous()">Logg in</span>
                 </a>
             </li>
         </ul>

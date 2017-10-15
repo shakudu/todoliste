@@ -44,14 +44,13 @@ function tabellLoad() {
             $("td#status", tr).html(String(toggleButton));
             $("td#start", tr).html(t.tidStart);
             $("td#stopp", tr).html(t.tidStopp);
-            $("td#handling", tr).html('' +
-                '<button type="button" value="'+t.id+'" class="sletteknapp btn btn-sm btn-default">\n' +
+            $("td#slett", tr).html('<button type="button" value="'+t.id+'" class="sletteknapp btn btn-sm btn-default">\n' +
                 '                <span class="glyphicon glyphicon-trash"></span> Slett\n' +
-                '            </button>\n' +
-                '\n' +
-                '            <button type="button" value="'+t.id+'" class="redigerknapp btn btn-sm btn-default">\n' +
+                '            </button>');
+            $("td#rediger",tr).html('<button type="button" value="'+t.id+'" class="redigerknapp btn btn-sm btn-default">\n' +
                 '                <span class="glyphicon glyphicon-edit"></span> Rediger\n' +
                 '            </button>');
+
             tabellrad.append(tr);
         })
     }).always(function () {

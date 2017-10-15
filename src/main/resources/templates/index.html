@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragments/common::head">
     <title>Todo-liste</title>
 </head>
@@ -57,7 +57,7 @@
             <th>Status</th>
             <th>Start</th>
             <th>Frist</th>
-            <th>Handling</th>
+            <th colspan="2" sec:authorize="hasRole('user')">Handling</th>
         </tr>
         <tbody id="personlist">
             <tr>
@@ -65,13 +65,14 @@
                 <td id="status"></td>
                 <td id="start"></td>
                 <td id="stopp"></td>
-                <td id="handling"></td>
+                <td width="85px" sec:authorize="hasRole('user')" id="rediger"></td>
+                <td sec:authorize="hasRole('admin')" id="slett"></td>
             </tr>
         </tbody>
 
     </table>
     <p class="text-muted" id="treff"></p>
-    <button class="btn btn-primary" data-toggle="modal" data-target="#modal" id="nyknapp">Ny oppgave</button>
+    <button sec:authorize="hasRole('user')" class="btn btn-primary" data-toggle="modal" data-target="#modal" id="nyknapp">Ny oppgave</button>
 </div>
 
 <footer th:replace="fragments/common::footer"/>
