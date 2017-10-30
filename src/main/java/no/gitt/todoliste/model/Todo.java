@@ -1,14 +1,18 @@
 package no.gitt.todoliste.model;
 
-import org.springframework.data.annotation.Id;
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.Instant;
 
+@Entity
 public class Todo {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    private int order;
+    private int rekkefolge;
     private String task;
     private Boolean completed;
     private Long tid;
@@ -23,13 +27,13 @@ public class Todo {
         this.tidStopp = tidStopp;
     }
 
-    public Todo(String task, Boolean completed, String tidStart, String tidStopp, int order) {
+    public Todo(String task, Boolean completed, String tidStart, String tidStopp, int rekkefolge) {
         this.task = task;
         this.completed = completed;
         this.tid = Instant.now().toEpochMilli();
         this.tidStart = tidStart;
         this.tidStopp = tidStopp;
-        this.order = order;
+        this.rekkefolge = rekkefolge;
     }
 
     public Todo() {
@@ -60,7 +64,7 @@ public class Todo {
         this.tid = tid;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
@@ -80,16 +84,16 @@ public class Todo {
         this.tidStopp = tidStopp;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public int getOrder() {
-        return order;
+    public int getRekkefolge() {
+        return rekkefolge;
     }
 
-    public void setOrder(int order) {
-        this.order = order;
+    public void setRekkefolge(int rekkefolge) {
+        this.rekkefolge = rekkefolge;
     }
 
     @Override

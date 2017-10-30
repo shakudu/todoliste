@@ -18,11 +18,11 @@ public class TodoRestController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Todo> todoListe() {
-        return todoRepository.findAllByOrderByOrderAsc();
+        return todoRepository.findAllByOrderByRekkefolgeAsc();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-    public Todo todoById(@PathVariable String id) {
+    public Todo todoById(@PathVariable Long id) {
         return todoRepository.findById(id);
     }
 
@@ -42,14 +42,14 @@ public class TodoRestController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-    public ResponseEntity<Todo> deleteTodo(@PathVariable String id) {
-        Todo t = todoById(id);
-        todoRepository.delete(t);
-        return new ResponseEntity<>(t,HttpStatus.OK);
+    public ResponseEntity<Long> deleteTodo(@PathVariable Long id) {
+        //Todo t = todoById(id);
+        todoRepository.deleteBy(id);
+        return new ResponseEntity<>(id,HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "toggle/{id}")
-    public ResponseEntity<Todo> toggleTodo(@PathVariable String id) {
+    public ResponseEntity<Todo> toggleTodo(@PathVariable Long id) {
         Todo todo = todoById(id);
         if(todo.getCompleted()) {
             todo.setCompleted(false);

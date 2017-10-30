@@ -1,17 +1,15 @@
 package no.gitt.todoliste.repository;
 
 import no.gitt.todoliste.model.Todo;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.Repository;
 
 import java.util.List;
 
-@Repository
-public interface TodoRepository extends MongoRepository<Todo, String> {
+public interface TodoRepository extends Repository<Todo, Long> {
     List<Todo> findAll();
     Todo save(Todo todo);
     List<Todo> findAllByOrderByTidDesc();
-    List<Todo> findAllByOrderByOrderAsc();
-    Todo findById(String id);
-
+    List<Todo> findAllByOrderByRekkefolgeAsc();
+    Todo findById(Long id);
+    void deleteBy(Long id);
 }
