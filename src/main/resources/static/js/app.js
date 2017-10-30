@@ -113,6 +113,14 @@ function tabellLoad() {
                 },
             });
         });
+
+        $("#personlist").sortable({
+            axis: "y",
+            cursor: "move",
+            stop: function() {
+                updatePositions();
+            }
+        }).disableSelection();
     });
 }
 
@@ -184,14 +192,6 @@ function updatePositions() {
 $(document).ready(function () {
     tabellLoad();
     resetSearch(); // Kaller denne for å skjule "Nullstill søk"-knappen.
-
-    $("#personlist").sortable({
-        axis: "y",
-        cursor: "move",
-        stop: function() {
-            updatePositions()
-        }
-    }).disableSelection();
 
     $("#search").keyup(function () {
         searchInput = $("#search").val();

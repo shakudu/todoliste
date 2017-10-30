@@ -17,7 +17,12 @@ public class ToDoListeApplication {
 		templateEngine.addDialect(sec); // Enable use of "sec"
 		return templateEngine;
 	}
-
+/*
+	@Bean
+	public GridFsTemplate gridFsTemplate() throws Exception {
+		return new GridFsTemplate(mongoDbFactory(), mappingMongoConverter());
+	}
+*/
 	public static void main(String[] args) {
 		SpringApplication.run(ToDoListeApplication.class, args);
 	}
