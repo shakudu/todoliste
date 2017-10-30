@@ -29,8 +29,11 @@ public class TodoRestController {
 
     @RequestMapping(method= RequestMethod.POST, value= "/order")
     public ResponseEntity<String> updateOrder(@RequestBody List<Todo> todoList) {
+        int i = 1;
         for(Todo t : todoList) {
+            t.setOrder(i);
             todoRepository.save(t);
+            i++;
         }
         return new ResponseEntity("OK",HttpStatus.OK);
     }
