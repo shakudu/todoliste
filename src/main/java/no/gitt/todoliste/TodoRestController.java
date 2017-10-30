@@ -43,7 +43,6 @@ public class TodoRestController {
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public ResponseEntity<Long> deleteTodo(@PathVariable Long id) {
-        //Todo t = todoById(id);
         todoRepository.deleteBy(id);
         return new ResponseEntity<>(id,HttpStatus.OK);
     }
